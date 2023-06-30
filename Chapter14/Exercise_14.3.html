@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Canvas HTML5</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="640" height="640">Not Supported</canvas>
+    <script>
+        const canvas = document.querySelector("#canvas");
+        const ctx = canvas.getContext("2d");
+
+        //1.Prepare to draw on the canvas.
+        ctx.beginPath();//start drawing new shape
+        ctx.fillStyle = "red"; //circle color or head
+        ctx.arc(300, 130, 100, 0, Math.PI * 2); //head
+        ctx.fill();
+
+        ctx.beginPath(); //start drawing new shape
+        ctx.fillStyle = "black"; //body
+        ctx.arc(250, 120, 20, 0, Math.PI * 2);//left eye
+
+        ctx.moveTo(370, 120);
+        ctx.arc(350, 120, 20, 0, Math.PI * 2);//right eye
+
+        ctx.moveTo(240, 160);
+        ctx.arc(300, 160, 60, 0, Math.PI);//mouth
+        ctx.fill();
+
+        //4.Move the draw position to the center,draw line for nose        ctx.moveTo(300, 130); // Move to the center of the head
+        ctx.moveTo(300, 130);
+        ctx.lineTo(300, 150); // Draw a line downward for the nose
+        ctx.stroke(); //shows color and line width of body part
+
+        // Step 5: Draw the body with a line down from the center of the arc, create the left
+        // arm, and then move the draw position to do the right arm, which will be
+        // twice the width of the left arm. Move back to the center and continue down
+        // to draw the left leg, move back to the center, and draw the line for the right leg.
+        ctx.beginPath();
+        ctx.moveTo(300, 230); // Starting point for the body
+        ctx.lineTo(300, 270); // Draw a line downward for the body
+
+        ctx.lineTo(400, 270); // left arm
+        ctx.lineTo(200, 270); // Move back to the center
+
+        ctx.lineTo(300, 270); // right arm
+
+        ctx.lineTo(300, 350); // left leg
+        ctx.lineTo(400, 500); // Move back to the center
+       
+
+       
+        ctx.moveTo(300, 350);  
+        ctx.lineTo(200, 500); // right leg
+        ctx.stroke();
+
+        //6: Move to top,set the colour blue, draw triangle for a hat.
+        ctx.beginPath();
+        ctx.fillStyle = "blue";
+        ctx.moveTo(200, 50); // Starting point for triangle hat
+        ctx.lineTo(400, 50); // Draw a line for the hat
+        ctx.lineTo(300, 20); // Continue drawing the hat
+        ctx.lineTo(200, 50); // Complete the triangle for the hat
+        ctx.fill();
+        ctx.stroke();
+    </script>
+</body>
+
+</html>

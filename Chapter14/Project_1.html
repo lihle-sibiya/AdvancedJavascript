@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <title>Canvas HTML5</title>
+</head>
+<body>
+    <div class="output"></div>
+    <script>
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+        //2 Set width and height
+        canvas.setAttribute("width", "500");
+        canvas.setAttribute("height", "400");
+        //2.Prepend it to the body
+        document.body.prepend(canvas);
+        //3.Empty array
+        const colVal = [];
+        //#.Loop divide width/10
+        for(let x=0;x<50;x++){
+            //add number of items to array,
+            colVal.push(0);
+        }
+        //4.Create main Matrix function
+        function matrix() {
+        //5. Set the fillStyle to be black with .05 opacity
+            ctx.fillStyle = "rgba(0,0,0,.05)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            //6. Set the canvas font color to be green.
+            ctx.fillStyle = "green";
+
+            //7. Using an array map, iterate items in array
+            colVal.map((posY, index) => {
+                //8.Characters display alt btn 0 and 1 random
+                //8.Use ternary operator
+                let output = Math.random()<0.5?0:1;
+
+                //9.Set positon of x use index value *10
+                let posX = (index * 10) + 10;
+
+//10.Create character within canvas using ctx fillText()
+                ctx.fillText(output, posX, posY);
+
+ //11.Add condition checking if posY is>100 + random 0-300
+                if (posY > 100 + Math.random() * 300) {
+                    //9.Using index from colVal array
+                    colVal[index] = 0;
+
+                } else {
+            //12.If posYis not past the random value and 100
+            //Increment index val by 10
+                    colVal[index] = posY + 10;
+                }
+            });
+        }
+        //4.Matrix function run at 50 millisec intervals.
+        setInterval(matrix, 50);
+    </script>
+</body>
+</html>

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 12 Intermediate JavaScript</title>
+    <script src="Exercise_12.9.js"></script>
+</head>
+
+<body>
+
+    <script>
+        
+       
+//Regular expressions
+//let text = "I love JavaScript!";
+//null  cos case sensitive
+//console.log(text.match(/javascript/));
+
+//case insensitive out i
+//console.log(text.match(/javascript/i));
+
+//Specifying multiple options for words
+//let text = "I love JavaScript!";
+//console.log(text.match(/javascript|nodejs|react/i));
+
+//will return only 1 if 2
+//to find everything dont use match us somethng else
+//let text = "I love React and JavaScript!";
+//console.log(text.match(/javascript|nodejs|react/i));
+
+//Global look
+//let text = "I love React and JavaScript!";
+//console.log(text.match(/javascript|nodejs|react/gi));
+
+//Character options
+//let text = "d";
+//console.log(text.match(/[abc]/));
+//or
+//console.log(text.match(/[abcd]/));
+
+//look a-d
+//let text = "d";
+//console.log(text.match(/[a-d]/));
+
+//lowercase
+//let text = "t";
+//console.log(text.match(/[a-zA-Z]/));
+
+//numbers
+//console.log(text.match(/[a-zA-Z0-9]/));
+
+//special character
+// let text = "äé!";
+//console.log(text.match(/[a-zA-Z0-9]/));
+
+//can match any character
+//let text = "Just some text.";
+// console.log(text.match(/./g));
+
+//backslash
+//let text = "Just some text.";
+//console.log(text.match(/\./g));
+
+//let text = "I'm 29 years old.";
+//console.log(text.match(/\d/g));
+
+//\s, which matches all whitespace characters
+//let text = "Coding is a lot of fun!";
+//console.log(text.match(/\s/g));
+
+//\b, which matches text only when it's at the beginning of a word
+//let text = "In the end or at the beginning?";
+//console.log(text.match(/\bin/gi));
+
+
+//error cos match works on strings not numbers
+//let nr = 357;
+//console.log(nr.match(/3/g));
+
+//groups
+//let text = "I love JavaScript!";
+//console.log(text.match(/(love|dislike)\s(javascript|spiders)/gi));
+
+//difficult repeating'
+// let text = "I love JavaScript!";
+//console.log(text.match(/[a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9][a-zA-Z0-9]/g));
+
+//repeating
+//let text = "You are doing great!";
+// console.log(text.match(/n?g/gi));
+
+
+
+//look for all 123
+//let text = "123123123";
+//console.log(text.match(/(123)+/));
+
+///(123)*a/
+// let text = "123123123a";
+//console.log(text.match(/(123)+a/));
+
+
+//repeating with min and max
+//let text = "abcabcabc";
+//console.log(text.match(/(abc){1,2}/));
+
+
+//Practical regex
+
+//Searching and replacing strings
+//case-insensitive search
+//let text = "That's not the case.";
+//console.log(text.search(/Case/i));
+
+//replace
+//let text = "Coding is fun. Coding opens up a lot of opportunities.";
+//console.log(text.replace("Coding", "JavaScript"));
+
+//replace with global modifier
+//let text = "Coding is fun. Coding opens up a lot of opportunities.";
+//console.log(text.replace(/Coding/g, "JavaScript"));
+
+
+    </script>
+</body>
+
+</html>
+
+<!--Practice exercise 12.1-->
+<!--!doctype html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+    <div id="output">Complete JavaScript Course</div>
+    Search for:
+    <input id="sText" type="text">
+    <br> Replace with:
+    <input id="rText" type="text">
+    <br>
+    <button>Replace</button>
+    <script>
+        let object1 = document.getElementById("output");
+        let object2 = document.getElementById("sText");
+        let object3 = document.getElementById("rText");
+        let button = document.querySelector("button");
+        button.addEventListener("click", lookup);
+        function lookup() {
+            let s = object1.textContent;
+            let rt = object3.value;
+            let re = new RegExp(object2.value, "gi");
+            if (s.match(re)) {
+                let newObject = s.replace(re, rt);
+                object1.textContent = newObject;
+            }
+        }
+    </script>
+</body>
+
+</html-->
+
+<!--Email validation-->
+<!--html>
+
+<body>
+    <script>
+        let emailPattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
+        let validEmail = "maaike_1234@email.com";
+        let invalidEmail = "maaike@mail@.com";
+        console.log(validEmail.match(emailPattern));
+        console.log(invalidEmail.match(emailPattern));
+    </script>
+</body>
+
+</html-->
+
+<!--Practice exercise 12.2-->
+<!--!doctype html>
+<html>
+
+<head>
+    <title>JavaScript Course</title>
+</head>
+
+<body>
+    <div class="output"></div>
+    <input id="email" type="text">
+    <input type="text" placeholder="Enter Email">
+    <button>Check</button>
+    <script>
+        let output = document.getElementById("output");
+        let email = document.getElementById("email");
+        let button = document.querySelector("button");
+        button.addEventListener("click", checkEmail);
+        function checkEmail() {
+            email = email.value;
+            if (validate(email)) {
+                output.textContent = "Valid email";
+                output.style.backgroundColor = "green";
+            }
+            else {
+                output.textContent = "Invalid email";
+                output.style.backgroundColor = "red";
+            }
+            function validate(email) {
+                let emailPattern = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi;
+                let found = email.match(emailPattern);
+                if (found === null) {
+                    return false
+                }
+                return true;
+            }
+        }
+    </script>
+</body>
+
+</html-->
+
+<!--!doctype html>
+<html>
+<head>
+<title>JavaScript Course</title>
+</head>
+<body>
+<div class="output"></div>
+<input type="text" placeholder="Enter Email">
+<button>Check</button>
+    <script>
+        const output = document.querySelector(".output");
+        const emailVal = document.querySelector("input");
+        const btn = document.querySelector("button");
+        const emailExp =
+            /([A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z0-9]+)\w+/;
+        btn.addEventListener("click", (e) => {
+            const val = emailVal.value;
+            const result = emailExp.test(val);
+            let response = "";
+            if (!result) {
+                response = "Invalid Email";
+                output.style.color = "red";
+            } else {
+                response = "Valid Email";
+                output.style.color = "green";
+            }
+            emailVal.value = "";
+            output.textContent = response;
+        });
+    </script>
+</body>
+
+</html-->
+
+<!--html>
+<body>
+    <script>
+        //Functions and the arguments object
+        /*function test(a, b, c) {
+            console.log("first:", a, arguments[0]);
+            console.log("second:", b, arguments[1]);
+            console.log("third:", c, arguments[2]);
+        }
+        test("fun", "js", "secrets");$*/
+
+        /*function test(a, b, c) {
+            a = "nice";
+            arguments[1] = "JavaScript";
+            console.log("first:", a, arguments[0]);
+            console.log("second:", b, arguments[1]);
+            console.log("third:", c, arguments[2]);
+        }
+        test("fun", "js", "secrets");*/
+        
+    </script>
+</body>
+</html-->
+
+<!--Practice exercise 12.3-->
+<!--html>
+<body>
+    <script>
+        let answer = searchArgs(3, 10, 15, 100, 300);
+        console.log(answer);
+        function searchArgs() {
+            let lastOne ="";
+            for (i = 0; i < arguments.length; i++) {
+                lastOne = arguments[i];
+            }
+            return lastOne;
+        }
+    </script>
+</body>
+</html-->
+
+<!--JavaScript hoisting-->
+
+<!--html>
+
+<body>
+    <script>
+        //JavaScript hoisting
+        // x = 5;
+        // console.log(x);
+        //var x;
+        //let will give error cos uninitialised variable
+        //let x;
+
+        //Using strict mode
+        // always "use strict";
+
+        //"use strict";
+        //var still works in strict mode
+        //x = 5;
+        //console.log(x);
+        //var x;
+
+        //use strict will make it an error
+        //"use strict";
+        //x = 5;
+        //console.log(x);
+
+        //Debugging
+
+    </script>
+</body>
+
+</html-->
+
+<!--html>
+    <body>
+        <script>
+            //Error handling
+/*try {
+    somethingVeryDangerous();
+} catch (e) {
+    if (e instanceof TypeError) {
+        // deal with TypeError exceptions
+    } else if (e instanceof RangeError) {
+        // deal with RangeError exceptions
+    } else if (e instanceof EvalError) {
+        // deal with EvalError exceptions
+    } else {
+        //deal with all other exceptions
+        throw e; //rethrow
+    }
+}*/
+
+/*try {
+    trySomething();
+    } catch (e) {
+    console.log("Oh oh");
+    } finally {
+    console.log("Error or no error, I will be logged!");
+    }*/
+
+/*function somethingVeryDangerous() {
+    throw RangeError();
+    }*/
+        </script>
+    </body>
+</html-->
+
+
+<!--Practice exercise 12.5-->
+<!--html>
+<body>
+    <script>
+        numCheck(100);
+numCheck("abc");
+
+function numCheck(value) {
+    try {
+        if (!isNaN(value)) {
+            console.log("Received a number");
+
+        }
+        else {
+            throw "This is not a number";
+        }
+    } catch (e) {
+        console.log(e);
+    }
+    finally{
+        console.log(`value is ${value}`);
+    }
+}
+    </script>
+</body>
+</html-->
+<!--html>
+
+<body>
+    <script>
+        //Using cookies
+        /*let cookie = decodeURIComponent(document.cookie);
+        let cookieList = cookie.split(";");
+        for (let i = 0; i < cookieList.length; i++) {
+            let c = cookieList[i];
+            if (c.charAt(0) == " ") {
+                c = c.trim();
+            }
+            if (c.startsWith("name")) {
+                alert(c.substring(5, c.length));
+            }
+        }*/
+
+
+
+
+
+
+    </script>
+</body>
+
+</html-->
+
+<!--Local Storage-->
+<!--html>
+
+<body>
+    <div id="kept"></div>
+    <script>
+
+
+        //let message ="Morning, I am hungry";
+        //localStorage.setItem("example2", "hello winter");
+        //if(localStorage.getItem("example2")){
+        // document.getElementById("kept").innerHTML =localStorage.getItem("example2");
+        //}
+        //console.log(localStorage.key(0));
+        //console.log(localStorage.getItem(window.localStorage.key(1)));
+
+        //window.localStorage.removeItem("example2");
+        //console.log(localStorage.getItem(window.localStorage.key(1)));
+
+
+    </script>
+</body>
+
+</html-->
+
+<!--Practice exercise 12.7-->
+<!--!doctype html>
+<html>
+
+<head>
+    <title>JavaScript</title>
+    <style>
+        .ready {
+            background-color: #ddd;
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <input placeholder="New Item" value="test item" maxlength="30">
+        <button>Add</button>
+    </div>
+    <ul class="output">
+    </ul>
+    <script>
+        let userTask = document.querySelector(".main input");
+        let addBtn = document.querySelector(".main button");
+        let output = document.querySelector(".output");
+        let tasks = JSON.parse(localStorage.getItem("tasklist")) || [];
+        addBtn.addEventListener("click", createListItem);
+        if (tasks.length > 0) {
+            tasks.forEach((task) => {
+                genItem(task.val, task.checked);
+            });
+        }
+        function saveTasks() {
+            localStorage.setItem("tasklist", JSON.stringify(tasks));
+        }
+        function buildTasks() {
+            tasks.length = 0;
+            const curList = output.querySelectorAll("li");
+            curList.forEach((el) => {
+                const tempTask = {
+                    val: el.textContent,
+                    checked: false
+                };
+                if (el.classList.contains("ready")) {
+                    tempTask.checked = true;
+                }
+                tasks.push(tempTask);
+            });
+            saveTasks();
+        }
+        function genItem(val, complete) {
+            const li = document.createElement("li");
+            const temp = document.createTextNode(val);
+            li.appendChild(temp);
+            output.append(li);
+            userTask.value = "";
+            if (complete) {
+                li.classList.add("ready");
+            }
+            li.addEventListener("click", (e) => {
+                li.classList.toggle("ready");
+                buildTasks();
+            });
+            return val;
+        }
+        function createListItem() {
+            const val = userTask.value;
+            if (val.length > 0) {
+                const myObj = {
+                    val: genItem(val, false),
+                    checked: false
+                };
+                tasks.push(myObj);
+                saveTasks();
+            }
+        }
+    </script>
+</body>
+
+</html-->
+
+<!--JSON-->
+<!--html>
+
+<body>
+    <script>
+        {
+            "name" : "Malika",
+                "age" : 50,
+                    "profession" : "programmer",
+                        "languages" : ["JavaScript", "C#", "Python"],
+                            "address" : {
+                "street" : "Some street",
+                    "number" : 123,
+                        "zipcode" : "3850AA",
+                            "city" : "Utrecht",
+                                "country" : "The Netherlands"
+            }
+        }
+
+        //array of two objects
+        {
+            "companies": [
+                {
+                    "name": "JavaScript Code Dojo",
+                    "addresses": [
+                        {
+                            "street": "123 Main street",
+                            "zipcode": 12345,
+                            "city": "Scott"
+                        },
+                        {
+                            "street": "123 Side street",
+                            "zipcode": 35401,
+                            "city": "Tuscaloosa"
+                        }
+                    ]
+                },
+                {
+                    "name": "Python Code Dojo",
+                    "addresses": [
+                        {
+                            "street": "123 Party street",
+                            "zipcode": 68863,
+                            "city": "Nebraska"
+                        },
+                        {
+                            "street": "123 Monty street",
+                            "zipcode": 33306,
+                            "city": "Florida"
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+</body>
+
+</html-->
+
+<!--Practice exercise 12.8-->
+<!--html>
+
+<body>
+    <script>
+        let myList = [{
+            "name": "Learn JavaScript",
+            "status": true
+        },
+        {
+            "name": "Try JSON",
+            "status": false
+        }
+        ];
+        reloader();
+        function reloader() {
+            myList.forEach((el) => {
+                console.log(`${el.name} = ${el.status}`);
+            });
+        }
+    </script>
+</body>
+
+</html-->
+
+<!--Parsing JSON-->
+<!--html>
+
+<body>
+    <script>
+        //Parsing JSON
+        /*let str = "{\"name\": \"Maaike\", \"age\": 30}";
+        let obj = JSON.parse(str);
+        console.log(obj.name, "is", obj.age);*/
+
+        //Convert to JSON string
+        let dog = {
+            "name": "wiesje",
+            "breed": "dachshund"
+        };
+        let strdog = JSON.stringify(dog);
+        console.log(typeof strdog);
+        console.log(strdog);
+    </script>
+</body>
+
+</html-->
+
+<!--Practice exercise 12.9-->
+<!--html>
+
+<body>
+    <script>
+        let myList = [{
+            "name": "Learn JavaScript",
+            "status": true
+        },
+        {
+            "name": "Try JSON",
+            "status": false
+        }
+        ];
+        reloader();
+        function reloader() {
+            myList.forEach((el) => {
+                console.log(`${el.name} = ${el.status}`);
+            });
+        }
+
+        let newStr = JSON.stringify(myList);
+        let newObj = JSON.parse(newStr);
+        newObj.forEach(e=> console.log(e.name, e.status));
+       
+    </script>
+</body>
+
+</html-->
+
+
+        

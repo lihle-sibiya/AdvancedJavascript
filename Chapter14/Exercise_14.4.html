@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Canvas HTML5</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas" width="640" height="640">Not Supported</canvas>
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext('2d');
+        //3. Create a string variable with the message Hello World.
+        const str = "Hello World";
+        ctx.font = 'italic 50px Comic';
+
+        //4. Set a font style to blue, use fillStyle property.
+        ctx.fillStyle = 'blue';
+
+        //4. You can also align the text to the left.
+        ctx.textAlign = 'left';
+        
+        //5. Add the text to the canvas with fillText
+        ctx.fillText(str, 100, 100);
+        ctx.font = 'bold 20px Arial';
+
+        //6. Set a new font and color of red.
+        ctx.fillStyle = 'red';
+
+        //7. Create a loop and,using the value of the loop variable, 
+                for (let x = 1; x < 11; x++) {
+        //add text to the page canvas element.
+            ctx.fillText("counter:" + x, 50, (200 + (40 * x)));
+        }
+
+    </script>
+</body>
+
+</html>
