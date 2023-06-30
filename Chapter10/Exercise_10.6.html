@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>JS Tester</title>
+</head>
+<body>
+    <!--1. Add same class "myEle"-->
+    <!--2. Add distinguishing content in elements "One"-->
+    <div class="container">
+        <div class="myEle">One</div>
+        <div class="myEle">Two</div>
+        <div class="myEle">Three</div>
+        <div class="myEle">Four</div>
+        <div class="myEle">Five</div>
+    </div>
+    <script>
+        //3. use QuerySelectorAll() to select all the matching occurrences of
+        const eles = document.querySelectorAll(".myEle");
+        //4. Output in console, first as an array
+        console.log(eles);
+        //4. Output in console, looping through them to output them one by one.
+        eles.forEach((el) => {
+            console.log(el);
+        });
+    </script>
+</body>
+</html>

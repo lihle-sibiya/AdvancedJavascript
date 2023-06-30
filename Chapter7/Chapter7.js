@@ -41,7 +41,7 @@
     alert("Hi " + p2.firstname + p.lastname);*/
 
 //Methods
-class Person{
+/*class Person{
     firstname;
     lastname
     constructor(firstname , lastname = "Doe") {
@@ -58,7 +58,7 @@ class Person{
  
     let p2 = new Person("Lihle", "Sibiya");
     alert("Hi " + p2.firstname)
-    p2.greet();
+    p2.greet();*/
 
 
 
@@ -122,7 +122,7 @@ Person.prototype.introduce = function () {
     console.log("Hi, I'm", this.firstname);
 };*/
 
-Person.prototype.introduce = function () {
+/*Person.prototype.introduce = function () {
     console.log("Hi, I'm", this.firstname);
     };
 
@@ -140,4 +140,16 @@ let a = new Animal("Grrr");
 console.log(a.sound);
 Animal.prototype.cry = function () {
     console.log("Ewww", this.sound);
-    };
+    };*/
+
+    //Exercise 7.1
+    Class Person {
+        constructor(firstName, lastName = ){
+            this.firstName = firstName;
+            this.lastName = lastName;
+        }
+    }
+    let friend1 = new Person ("Warona", "Modungwa");
+    let friend2 = new Person ("Aviwe", "Mthombeni");
+    console.log("Hi " + friend1.firstName, friend1.lastName);
+    console.log("Hi " + friend2.firstName, friend2.lastName);

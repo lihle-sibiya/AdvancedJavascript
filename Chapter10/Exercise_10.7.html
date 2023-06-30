@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>JS Tester</title>
+</head>
+<body>
+    <div>
+        <!--2. Add this to the onclick function parameters-->
+        <button onclick="message(this)">Button 1</button>
+        <!--4. Add a second button-->
+        <button onclick="message(this)">Button 2</button>
+    </div>
+    <script>
+        //1. Create a function to handle a click
+        function message(el) {
+            //3. Within the message function, use console.dir() to output
+            console.dir(el.textContent);
+        }
+    </script>
+</body>
+</html>

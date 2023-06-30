@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <title>Dynamic event manipulation</title>
+</head>
+<body>
+    <!--2. Create three HTML elements using the same tag.-->
+    <!--3. Add some content (Hello World) within each element so you can distinguish between them-->
+    <div>Hello World 1</div>
+    <div>Hello World 2</div>
+    <div>Hello World 3</div>
+    <!--4. Add a script element-->
+    <script>
+        //select the page elements by tag name
+        const myEles = document.getElementsByTagName("div");
+        //5. Using the index value, select the middle element and output it into the console
+        console.log(myEles[1]);
+    </script>
+</body>
+</html>
